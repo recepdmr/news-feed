@@ -1,0 +1,21 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+option go_package = "services/weatherforecast/server";
+
+message WeatherForecastResult { string result = 1; }
+
+message GetWeatherForecastByCityNameRequest { string cityName = 1; }
+message GetWeatherForecastByCityNameResponse { WeatherForecastResult data = 1; }
+
+message FillWeatherForecastRequest {
+  string cityName = 1;
+}
+
+service WeatherForecast {
+  rpc GetWeatherForecastByCityName(GetWeatherForecastByCityNameRequest)
+      returns (GetWeatherForecastByCityNameResponse) {}
+
+  rpc FillWeatherForecast(FillWeatherForecastRequest) 
+      returns (google.protobuf.Empty) {}
+}
