@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "services/post/server";
+
+message GetPostsRequest {
+  string current_max_post_id = 1;
+}
+
+message GetPostsResponse { 
+repeated Post data = 1; 
+}
+
+message Post {
+string id = 1;
+string content = 2;
+string created_at = 3;
+string deleted_at = 4;
+}
+
+service PostService {
+  rpc GetPosts(GetPostsRequest) returns (GetPostsResponse) {}
+}
