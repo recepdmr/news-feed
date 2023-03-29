@@ -1,0 +1,6 @@
+go 1.20
+
+use (
+	./apigateways/public
+	./services/post
+)
