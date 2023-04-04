@@ -94,15 +94,11 @@ func init() {
 
 func main() {
 	log.Printf("Post service is available at %v", port)
+
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%v", port))
 	if err != nil {
 		panic(err)
 	}
-
-	// osmanEntity, _ := repository.GetById("640d0e624774b67c5848f798")
-
-	// repository.Delete(*osmanEntity)
-	// fmt.Print(repository.GetAll())
 
 	s := grpc.NewServer()
 	reflection.Register(s)
